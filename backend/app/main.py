@@ -1,6 +1,4 @@
-# pyrefly: ignore [missing-import]
 from fastapi import FastAPI
-# pyrefly: ignore [missing-import]
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import inspect, text
 from .config import settings
@@ -21,7 +19,6 @@ app.add_middleware(
 
 Base.metadata.create_all(bind=engine)
 
-# Auto schema migrations for dynamic fields
 with engine.begin() as connection:
     doc_cols = {column['name'] for column in inspect(engine).get_columns('doctors')}
     if 'weekly_schedule' not in doc_cols:
