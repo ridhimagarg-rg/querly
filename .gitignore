@@ -8,7 +8,6 @@ __pycache__/
 .idea/
 .DS_Store
 Thumbs.db
-mysql-data/
 ml_models/*.pkl
 data/*.csv
 !data/hospital_catalog.json

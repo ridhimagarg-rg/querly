@@ -246,7 +246,7 @@ document.addEventListener("click", (e) => {
 // Server Configuration Modal & Status Management
 // ==========================================
 function openServerConfigModal() {
-  const currentApi = window.getApiBase ? window.getApiBase() : "http://127.0.0.1:8000/api";
+  const currentApi = window.getApiBase ? window.getApiBase() : "/api";
   const inDemo = window.isDemoMode ? window.isDemoMode() : false;
   const isHttps = window.location.protocol === "https:";
 
