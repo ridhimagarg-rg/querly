@@ -1,9 +1,3 @@
-/**
- * Querly API Client & Environment Configuration
- * Supports Local Development, Deployed Production Servers, and Offline Demo Mode
- */
-
-// Determine appropriate default API Base
 function getDefaultApiBase() {
   const isLocal =
     window.location.hostname === "localhost" ||
@@ -15,14 +9,18 @@ function getDefaultApiBase() {
     return "http://127.0.0.1:8000/api";
   }
 
-  // Deployed environment: check if relative /api is available (reverse proxy), otherwise use configured or local fallback
-  return "http://127.0.0.1:8000/api";
+  return "/api";
 }
 
 function getApiBase() {
   const custom = localStorage.getItem("mq_api_base");
   if (custom && custom.trim()) {
     return custom.trim().replace(/\/+$/, "");
+  }
+  const configured = window.QUERLY_API_BASE ||
+    (window.QUERLY_CONFIG && window.QUERLY_CONFIG.apiBase);
+  if (configured && String(configured).trim()) {
+    return String(configured).trim().replace(/\/+$/, "");
   }
   return getDefaultApiBase();
 }
